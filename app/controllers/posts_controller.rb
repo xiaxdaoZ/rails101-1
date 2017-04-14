@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, :only => [:new, :create]
+  scope :recent, -> { order("created_at DESC")}
 
   def new
     @group = Group.find(params[:group_id])
